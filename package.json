@@ -1,0 +1,15 @@
+{
+  "name": "2bin-q1-devops-berlin-clock",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "2BIN-Q1-DEVOPS-BERLIN-CLOCK"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
