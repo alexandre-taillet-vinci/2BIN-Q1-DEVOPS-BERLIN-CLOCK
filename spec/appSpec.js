@@ -237,3 +237,79 @@ describe("A suite of tests for the function generateFiveMinutes", function() {
         expect(clock.getFiveMinutes()).toBe('OOOOOOOOOOO');
     });
 });
+
+describe("A suite of tests for the function generateSingleHOurs", () => {
+    it('should return default value of the clock', () => {
+        let clock = new BerlinClock();
+        console.log(clock.getSingleHours());
+        expect(clock.getSingleHours()).toBe('OOOO');
+    });
+
+    it('should return 4 red lights for 19 hours', () => {
+        
+        const date = new Date();
+        date.setHours(19);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateSingleHours();
+
+        console.log(clock.getSingleHours());
+        expect(clock.getSingleHours()).toBe('RRRR');
+    });
+    
+
+    it('should return 3 red lights for 18 hours', () => {
+        const date = new Date();
+        date.setHours(18);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateSingleHours();
+
+        console.log(clock.getSingleHours());
+        expect(clock.getSingleHours()).toBe('RRRO');
+    });
+
+    it('should return 2 red lights for 12 hours', () => {
+        const date = new Date();
+        date.setHours(12);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateSingleHours();
+
+        console.log(clock.getSingleHours());
+        expect(clock.getSingleHours()).toBe('RROO');
+    });
+
+    it('should return 1 red light for 6 hours', () => {
+        const date = new Date();
+        date.setHours(6);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateSingleHours();
+
+        console.log(clock.getSingleHours());
+        expect(clock.getSingleHours()).toBe('ROOO');
+    });
+
+    it('should return 0 red light for 0 hours', () => {
+        const date = new Date();
+        date.setHours(0);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateSingleHours();
+
+        console.log(clock.getSingleHours());
+        expect(clock.getSingleHours()).toBe('OOOO');
+    });
+    
+});
