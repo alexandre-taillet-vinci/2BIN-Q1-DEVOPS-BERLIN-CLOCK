@@ -5,7 +5,8 @@ export class BerlinClock {
     constructor() {
         this.lamps = {
             singleMinutes: new Array(4).fill(OFF),
-            fiveMinutes: new Array(11).fill(OFF)
+            fiveMinutes: new Array(11).fill(OFF),
+            singleHours: new Array(4).fill(OFF),
         };
     }
 
@@ -35,6 +36,17 @@ export class BerlinClock {
             } else {
                 this.lamps.fiveMinutes[i] = (minutes / 5) > i ? YELLOW : OFF;
             }
+        }
+    }
+
+    getSingleHours(){
+        return this.lamps.singleHours.join('');
+    }
+
+    generateSingleHours() {
+        const hours = this.date.getHours();
+        for (let i = 0; i < 4; i++) {
+            this.lamps.singleHours[i] = (hours % 5) > i ? RED : OFF;
         }
     }
 
