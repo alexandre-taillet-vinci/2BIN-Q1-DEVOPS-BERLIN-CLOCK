@@ -1,9 +1,10 @@
 {
   "name": "2bin-q1-devops-berlin-clock",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": { 
-    "test": "jasmine" 
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
