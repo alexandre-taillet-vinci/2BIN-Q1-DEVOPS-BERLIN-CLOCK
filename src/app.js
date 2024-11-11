@@ -8,6 +8,7 @@ export class BerlinClock {
             fiveMinutes: new Array(11).fill(OFF),
             singleHours: new Array(4).fill(OFF),
             fiveHours: new Array(4).fill(OFF),
+            seconds: OFF
         };
     }
 
@@ -53,6 +54,15 @@ export class BerlinClock {
 
     getFiveHours() {
         return this.lamps.fiveHours.join('');
+    }
+
+    getSeconds() {
+        return this.lamps.seconds;
+    }
+
+    generateSeconds() {
+        const seconds = this.date.getSeconds();
+        this.lamps.seconds = seconds % 2 === 0 ? RED : OFF;
     }
 
     generateFiveHours() {

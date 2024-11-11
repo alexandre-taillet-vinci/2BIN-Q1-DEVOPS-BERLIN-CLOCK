@@ -398,3 +398,37 @@ describe("A suite of test for the function generateFiveHours", () => {
         expect(clock.getFiveHours()).toBe('OOOO');
     });
 })
+
+describe("A suite of tests for the function generateSeconds", () => {
+    it('should return default value of the clock', () => {
+        let clock = new BerlinClock();
+        console.log(clock.getSeconds());
+        expect(clock.getSeconds()).toBe('O');
+    });
+
+    it('should return red light for even seconds', () => {
+        const date = new Date();
+        date.setSeconds(0);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateSeconds();
+
+        console.log(clock.getSeconds());
+        expect(clock.getSeconds()).toBe('R');
+    });
+
+    it('should return off light for odd seconds', () => {
+        const date = new Date();
+        date.setSeconds(1);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateSeconds();
+
+        console.log(clock.getSeconds());
+        expect(clock.getSeconds()).toBe('O');
+    });
+});
