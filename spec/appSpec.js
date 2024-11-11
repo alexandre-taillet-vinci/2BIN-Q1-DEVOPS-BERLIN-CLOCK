@@ -311,5 +311,90 @@ describe("A suite of tests for the function generateSingleHOurs", () => {
         console.log(clock.getSingleHours());
         expect(clock.getSingleHours()).toBe('OOOO');
     });
-    
 });
+
+describe("A suite of test for the function generateFiveHours", () => {
+    it('should return default value of the clock', () => {
+        let clock = new BerlinClock();
+        console.log(clock.getFiveHours());
+        expect(clock.getFiveHours()).toBe('OOOO');
+    });
+    
+    it('should return 4 red light for 23 hours', () => {
+        const date = new Date();
+        date.setHours(23);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateFiveHours();
+
+        console.log(clock.getFiveHours());
+        expect(clock.getFiveHours()).toBe('RRRR');
+    });
+
+    it('should return 4 red light for 19 hours', () => {
+        const date = new Date();
+        date.setHours(19);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateFiveHours();
+
+        console.log(clock.getFiveHours());
+        expect(clock.getFiveHours()).toBe('RRRO');
+    });
+
+    it('should return 4 red light for 14 hours', () => {
+        const date = new Date();
+        date.setHours(14);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateFiveHours();
+
+        console.log(clock.getFiveHours());
+        expect(clock.getFiveHours()).toBe('RROO');
+    });
+
+    it('should return 4 red light for 9 hours', () => {
+        const date = new Date();
+        date.setHours(9);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateFiveHours();
+
+        console.log(clock.getFiveHours());
+        expect(clock.getFiveHours()).toBe('ROOO');
+    });
+
+    it('should return 4 red light for 4 hours', () => {
+        const date = new Date();
+        date.setHours(4);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateFiveHours();
+
+        console.log(clock.getFiveHours());
+        expect(clock.getFiveHours()).toBe('OOOO');
+    });
+
+    it('should return 4 red light for 0 hours', () => {
+        const date = new Date();
+        date.setHours(0);
+
+        let clock = new BerlinClock();
+
+        clock.setTime(date);
+        clock.generateFiveHours();
+
+        console.log(clock.getFiveHours());
+        expect(clock.getFiveHours()).toBe('OOOO');
+    });
+})
