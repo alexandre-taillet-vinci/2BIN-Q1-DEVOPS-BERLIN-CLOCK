@@ -432,12 +432,12 @@ describe("A suite of tests for the function generateSeconds", () => {
 });
 
 describe("Clock integration", () => {
-    it("check if clock work with 13h50 and 4 seconds", () => {
-        const expected = "R" + "\n" + "RROO" + "\n" + "RRRO" + "\n" + "YYRYYRYYRYO" + "\n" + "OOOO";
+    it("check if clock work with 13h52 and 4 seconds", () => {
+        const expected = "R" + "\n" + "RROO" + "\n" + "RRRO" + "\n" + "YYRYYRYYRYO" + "\n" + "YYOO";
         
         const date = new Date();
         date.setHours(13);
-        date.setMinutes(50);
+        date.setMinutes(52);
         date.setSeconds(4);
     
         let clock = new BerlinClock();
