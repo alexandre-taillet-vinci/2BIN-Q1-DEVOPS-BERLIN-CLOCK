@@ -7,13 +7,13 @@
 #### Clone the repo with 
 ``git clone https://github.com/alexandre-taillet-vinci/2BIN-Q1-DEVOPS-BERLIN-CLOCK``
 
-#### Run node package manager installer with
+#### Run npm package manager installer with
 ``npm install``
 
 #### You can run the tests if you want with
 ``npm run test``
 
-#### Run a little exemple of a real-time berlin clock updating every second with
+#### Run a little example of a real-time berlin clock updating every second with
 ``npm run start``
 
 ### And enjoy !🌠
