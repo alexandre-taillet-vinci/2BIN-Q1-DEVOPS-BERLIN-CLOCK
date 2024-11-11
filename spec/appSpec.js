@@ -80,9 +80,9 @@ describe("A suite of tests for the function generateFiveMinutes", function () {
     expect(clock.getFiveMinutes()).toBe("OOOOOOOOOOO");
   });
 
-  it("should return 11 lights for 55 minutes", () => {
+  it("should return 11 lights for 56 minutes", () => {
     const date = new Date();
-    date.setMinutes(55);
+    date.setMinutes(56);
 
     let clock = new BerlinClock();
 
@@ -93,9 +93,9 @@ describe("A suite of tests for the function generateFiveMinutes", function () {
     expect(clock.getFiveMinutes()).toBe("YYRYYRYYRYY");
   });
 
-  it("should return 10 lights for 50 minutes", () => {
+  it("should return 10 lights for 52 minutes", () => {
     const date = new Date();
-    date.setMinutes(50);
+    date.setMinutes(52);
 
     let clock = new BerlinClock();
 
@@ -106,9 +106,9 @@ describe("A suite of tests for the function generateFiveMinutes", function () {
     expect(clock.getFiveMinutes()).toBe("YYRYYRYYRYO");
   });
 
-  it("should return 9 lights for 45 minutes", () => {
+  it("should return 9 lights for 47 minutes", () => {
     const date = new Date();
-    date.setMinutes(45);
+    date.setMinutes(47);
 
     let clock = new BerlinClock();
 
@@ -119,9 +119,9 @@ describe("A suite of tests for the function generateFiveMinutes", function () {
     expect(clock.getFiveMinutes()).toBe("YYRYYRYYROO");
   });
 
-  it("should return 8 lights for 40 minutes", () => {
+  it("should return 8 lights for 41 minutes", () => {
     const date = new Date();
-    date.setMinutes(40);
+    date.setMinutes(41);
 
     let clock = new BerlinClock();
 

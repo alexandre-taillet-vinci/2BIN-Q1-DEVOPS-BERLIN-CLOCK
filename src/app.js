@@ -28,15 +28,19 @@ export class BerlinClock {
         return this.lamps.fiveMinutes.join('');
     }
 
-   
-
     generateFiveMinutes() {
         const minutes = this.date.getMinutes();
+
         for (let i = 0; i < 11; i++) {
-            if ((i + 1) % 3 === 0 && (minutes / 5) > i) {
+            const isOn = Math.floor(minutes / 5) > i;
+            if(!isOn) {
+                this.lamps.fiveMinutes[i] = OFF;
+                continue;
+            }
+            if ((i + 1) % 3 === 0) {
                 this.lamps.fiveMinutes[i] = RED;
             } else {
-                this.lamps.fiveMinutes[i] = (minutes / 5) > i ? YELLOW : OFF;
+                this.lamps.fiveMinutes[i] = YELLOW;
             }
         }
     }
