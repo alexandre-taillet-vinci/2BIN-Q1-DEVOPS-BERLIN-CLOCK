@@ -55,11 +55,11 @@ export class BerlinClock {
     getFiveHours() {
         return this.lamps.fiveHours.join('');
     }
-
+ 
     generateFiveHours() {
         const hours = this.date.getHours();
         for (let i = 0; i < 4; i++) {
-            this.lamps.fiveHours[i] = (hours / 5) > i+1  ? RED : OFF;
+            this.lamps.fiveHours[i] = (hours / 5) >= i+1 ? RED : OFF;
         }
     }
 

@@ -331,7 +331,7 @@ describe("A suite of test for the function generateFiveHours", () => {
     expect(clock.getFiveHours()).toBe("RRRR");
   });
 
-  it("should return 4 red light for 19 hours", () => {
+  it("should return 3 red light for 19 hours", () => {
     const date = new Date();
     date.setHours(19);
 
@@ -344,9 +344,9 @@ describe("A suite of test for the function generateFiveHours", () => {
     expect(clock.getFiveHours()).toBe("RRRO");
   });
 
-  it("should return 4 red light for 14 hours", () => {
+  it("should return 2 red light for 14 hours", () => {
     const date = new Date();
-    date.setHours(14);
+    date.setHours(10);
 
     let clock = new BerlinClock();
 
@@ -357,7 +357,7 @@ describe("A suite of test for the function generateFiveHours", () => {
     expect(clock.getFiveHours()).toBe("RROO");
   });
 
-  it("should return 4 red light for 9 hours", () => {
+  it("should return 1 red light for 9 hours", () => {
     const date = new Date();
     date.setHours(9);
 
@@ -370,7 +370,7 @@ describe("A suite of test for the function generateFiveHours", () => {
     expect(clock.getFiveHours()).toBe("ROOO");
   });
 
-  it("should return 4 red light for 4 hours", () => {
+  it("should return 0 red light for 4 hours", () => {
     const date = new Date();
     date.setHours(4);
 
@@ -383,7 +383,7 @@ describe("A suite of test for the function generateFiveHours", () => {
     expect(clock.getFiveHours()).toBe("OOOO");
   });
 
-  it("should return 4 red light for 0 hours", () => {
+  it("should return 0 red light for 0 hours", () => {
     const date = new Date();
     date.setHours(0);
 
