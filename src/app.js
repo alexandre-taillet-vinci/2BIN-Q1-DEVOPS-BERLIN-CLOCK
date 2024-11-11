@@ -56,6 +56,13 @@ export class BerlinClock {
         return this.lamps.fiveHours.join('');
     }
 
+    generateFiveHours() {
+        const hours = this.date.getHours();
+        for (let i = 0; i < 4; i++) {
+            this.lamps.fiveHours[i] = (hours / 5) > i+1  ? RED : OFF;
+        }
+    }
+
     getSeconds() {
         return this.lamps.seconds;
     }
@@ -65,18 +72,32 @@ export class BerlinClock {
         this.lamps.seconds = seconds % 2 === 0 ? RED : OFF;
     }
 
-    generateFiveHours() {
-        const hours = this.date.getHours();
-        for (let i = 0; i < 4; i++) {
-            this.lamps.fiveHours[i] = (hours / 5) > i+1  ? RED : OFF;
-        }
+    generate() {
+        this.generateSingleMinutes();
+        this.generateFiveMinutes();
+        this.generateSingleHours();
+        this.generateFiveHours();
+        this.generateSeconds();
     }
 
-    setTime(unixTimestamp) {
-        this.date = new Date(unixTimestamp * 1000);
+    getClock() {
+        //this.generate();
+        return this.getSeconds() + "\n"
+            + this.getFiveHours() + "\n"
+            + this.getSingleHours() + "\n"
+            + this.getFiveMinutes() + "\n"
+            + this.getSingleMinutes();
     }
 
     setTime(date) {
-        this.date = date;
+        if(date instanceof Date) {
+            this.date = date;
+            return;
+        }
+        else if(typeof date === 'number') {
+            this.date = new Date(date * 1000);
+            return;
+        }
+        throw new Error("The parameter should be a Date Object or a unix timestamp");
     }
 }
