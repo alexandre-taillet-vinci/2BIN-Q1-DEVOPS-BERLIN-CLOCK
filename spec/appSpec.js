@@ -449,12 +449,12 @@ describe("Clock integration", () => {
         console.log(clock.getClock());
         expect(clock.getClock()).toBe(expected);
       });
-      it("check if clock work with 10h30 and 3 seconds", () => {
+      it("check if clock work with 10h30 and 3 seconds with UNIX Timestamp format", () => {
         const expected = "O" + "\n" + "RROO" + "\n" + "OOOO" + "\n" + "YYRYYROOOOO" + "\n" + "OOOO";
     
         let clock = new BerlinClock();
     
-        console.log("testDate"+new Date(1731317403*1000))
+        console.log("testDate : " + new Date(1731317403*1000))
         clock.setTime(1731317403);
         clock.generate();
     
