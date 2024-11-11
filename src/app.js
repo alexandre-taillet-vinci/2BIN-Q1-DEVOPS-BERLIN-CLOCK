@@ -7,6 +7,7 @@ export class BerlinClock {
             singleMinutes: new Array(4).fill(OFF),
             fiveMinutes: new Array(11).fill(OFF),
             singleHours: new Array(4).fill(OFF),
+            fiveHours: new Array(4).fill(OFF),
         };
     }
 
@@ -47,6 +48,17 @@ export class BerlinClock {
         const hours = this.date.getHours();
         for (let i = 0; i < 4; i++) {
             this.lamps.singleHours[i] = (hours % 5) > i ? RED : OFF;
+        }
+    }
+
+    getFiveHours() {
+        return this.lamps.fiveHours.join('');
+    }
+
+    generateFiveHours() {
+        const hours = this.date.getHours();
+        for (let i = 0; i < 4; i++) {
+            this.lamps.fiveHours[i] = (hours / 5) > i+1  ? RED : OFF;
         }
     }
 
