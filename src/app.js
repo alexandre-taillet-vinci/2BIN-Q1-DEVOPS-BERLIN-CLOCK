@@ -105,3 +105,23 @@ export class BerlinClock {
         throw new Error("The parameter should be a Date Object or a unix timestamp");
     }
 }
+
+// Main function to initialize and display the Berlin Clock
+// The clock will be updated every second
+// Ctrl + C to stop the clock
+function main() {
+    const clock = new BerlinClock();
+    
+    setInterval(() => {
+        const currentDate = new Date();
+        clock.setTime(currentDate);
+        clock.generate();
+        const berlinClock = clock.getClock();
+        console.log("Berlin Clock : ");
+        console.log(berlinClock);
+        console.log("-------------------------------------------------");
+    }, 1000);
+}
+
+// Run the main function with node src/app.js
+main();
