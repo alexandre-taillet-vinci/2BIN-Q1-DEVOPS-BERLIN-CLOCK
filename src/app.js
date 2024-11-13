@@ -12,11 +12,12 @@ export class BerlinClock {
         };
     }
 
+    // return the single minutes lamp of the clock
     getSingleMinutes() {
         return this.lamps.singleMinutes.join('');
     }
 
-
+    // Generate the single minutes lamp of the clock based on the current minutes of the date
     generateSingleMinutes() {
         const minutes = this.date.getMinutes();
         for (let i = 0; i < 4; i++) {
@@ -24,31 +25,35 @@ export class BerlinClock {
         }
     }
 
+    // return the five minutes lamp of the clock
     getFiveMinutes(){
         return this.lamps.fiveMinutes.join('');
     }
 
+    // Generate the five minutes lamp of the clock based on the current minutes of the date
     generateFiveMinutes() {
         const minutes = this.date.getMinutes();
-
         for (let i = 0; i < 11; i++) {
-            const isOn = Math.floor(minutes / 5) > i;
-            if(!isOn) {
-                this.lamps.fiveMinutes[i] = OFF;
-                continue;
-            }
-            if ((i + 1) % 3 === 0) {
-                this.lamps.fiveMinutes[i] = RED;
-            } else {
-                this.lamps.fiveMinutes[i] = YELLOW;
-            }
+            this.lamps.fiveMinutes[i] = this.getFiveMinuteLampState(minutes, i);
         }
     }
 
+    // Get the state of the five minutes lamp based on the current minutes of the date
+    getFiveMinuteLampState(minutes, index) {
+        const isOn = Math.floor(minutes / 5) > index;
+        if (!isOn) {
+            return OFF;
+        }
+        return (index + 1) % 3 === 0 ? RED : YELLOW;
+    }
+
+
+    // return the single hours lamp of the clock
     getSingleHours(){
         return this.lamps.singleHours.join('');
     }
 
+    // Generate the single hours lamp of the clock based on the current hours of the date
     generateSingleHours() {
         const hours = this.date.getHours();
         for (let i = 0; i < 4; i++) {
@@ -56,10 +61,12 @@ export class BerlinClock {
         }
     }
 
+    // return the five hours lamp of the clock
     getFiveHours() {
         return this.lamps.fiveHours.join('');
     }
  
+    // Generate the five hours lamp of the clock based on the current hours of the date
     generateFiveHours() {
         const hours = this.date.getHours();
         for (let i = 0; i < 4; i++) {
@@ -67,15 +74,19 @@ export class BerlinClock {
         }
     }
 
+    // return the seconds lamp of the clock
     getSeconds() {
         return this.lamps.seconds;
     }
 
+    // Generate the seconds lamp of the clock based on the current seconds of the date
     generateSeconds() {
         const seconds = this.date.getSeconds();
         this.lamps.seconds = seconds % 2 === 0 ? RED : OFF;
     }
 
+
+    // Generate the Berlin Clock using all the features of the clock
     generate() {
         this.generateSingleMinutes();
         this.generateFiveMinutes();
@@ -84,8 +95,8 @@ export class BerlinClock {
         this.generateSeconds();
     }
 
+    // Get the Berlin Clock in a string format like a real berlin clock
     getClock() {
-        //this.generate();
         return this.getSeconds() + "\n"
             + this.getFiveHours() + "\n"
             + this.getSingleHours() + "\n"
@@ -93,6 +104,7 @@ export class BerlinClock {
             + this.getSingleMinutes();
     }
 
+    // Set the time of the clock, the parameter should be a Date Object or a unix timestamp
     setTime(date) {
         if(date instanceof Date) {
             this.date = date;
