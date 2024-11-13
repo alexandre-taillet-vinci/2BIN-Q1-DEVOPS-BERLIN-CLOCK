@@ -30,19 +30,17 @@ export class BerlinClock {
 
     generateFiveMinutes() {
         const minutes = this.date.getMinutes();
-
         for (let i = 0; i < 11; i++) {
-            const isOn = Math.floor(minutes / 5) > i;
-            if(!isOn) {
-                this.lamps.fiveMinutes[i] = OFF;
-                continue;
-            }
-            if ((i + 1) % 3 === 0) {
-                this.lamps.fiveMinutes[i] = RED;
-            } else {
-                this.lamps.fiveMinutes[i] = YELLOW;
-            }
+            this.lamps.fiveMinutes[i] = this.getFiveMinuteLampState(minutes, i);
         }
+    }
+
+    getFiveMinuteLampState(minutes, index) {
+        const isOn = Math.floor(minutes / 5) > index;
+        if (!isOn) {
+            return OFF;
+        }
+        return (index + 1) % 3 === 0 ? RED : YELLOW;
     }
 
     getSingleHours(){
